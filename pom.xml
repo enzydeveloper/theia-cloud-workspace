@@ -9,12 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.enzy</groupId>
-	<artifactId>olom</artifactId>
+	<artifactId>sandbox</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>olom</name>
-	<description>Olom Chat Bot
-	https://cloud.ibm.com/docs/tone-analyzer/index.html
-	https://tone-analyzer-demo.ng.bluemix.net/
+	<name>sandbox</name>
+	<description>sandbox stuff here
 	</description>
 
 	<properties>
