@@ -22,7 +22,8 @@ public class Codewars1 {
 
     public static class BraceChecker {
 
-        public boolean isValid(String braces) {
+        public boolean isValid(String braces) 
+        {
             boolean result = true;
 
             //create last-in-first-out stack
@@ -39,16 +40,16 @@ public class Codewars1 {
                 // otherwise we want to check if the ending bracket matches
                 else
                 {
-                    Character endingBracket = stack.pop();
-                    if(checkCharacter.equals('(') && !endingBracket.equals(')'))
+                    Character checkCharacterPop = stack.pop();
+                    if(checkCharacterPop.equals('(') && !checkCharacter.equals(')'))
                     {
                         result = false;
                     }
-                    else if(checkCharacter.equals('[') && !endingBracket.equals(']'))
+                    else if(checkCharacterPop.equals('[') && !checkCharacter.equals(']'))
                     {
                         result = false;
                     }
-                    else if(checkCharacter.equals('{') && !endingBracket.equals('}'))
+                    else if(checkCharacterPop.equals('{') && !checkCharacter.equals('}'))
                     {
                         result = false;
                     }
