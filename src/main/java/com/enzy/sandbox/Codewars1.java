@@ -4,28 +4,28 @@ import java.util.Stack;
 import java.lang.Character;
 
 public class Codewars1 {
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         //System.out.println("Hello Death");
         testValid();
     }
     
 
-	public static void testValid() {
+    public static void testValid()
+    {
         BraceChecker checker = new BraceChecker();
-        /*
         System.out.println( checker.isValid("()}"));
         System.out.println( checker.isValid("[(])")); 
 
         System.out.println( checker.isValid("([{}])"));
         System.out.println( checker.isValid("(}"));
-        */
-        //System.out.println( checker.isValid("[(])(}(}))(}{]["));
-        //System.out.println( checker.isValid("[(])(}(}))(}{][())({}}{()][][(((({{"));
+
+        System.out.println( checker.isValid("[(])(}(}))(}{]["));
+        System.out.println( checker.isValid("[(])(}(}))(}{][())({}}{()][][(((({{"));
+        
         System.out.println( checker.isValid("(((({{"));
         System.out.println( checker.isValid("()"));
         
-        
-
         
     }
     
@@ -33,8 +33,8 @@ public class Codewars1 {
     //Valid Braces
     //https://www.codewars.com/kata/5277c8a221e209d3f6000b56/train/java
 
-    public static class BraceChecker {
-
+    public static class BraceChecker 
+    {
         public boolean isValid(String braces) 
         {
             boolean result = true;
@@ -58,7 +58,8 @@ public class Codewars1 {
                     else
                     {
                         Character checkCharacterPop;
-                        try { 
+                        try 
+                        { 
                             checkCharacterPop= stack.pop();
 
                             if(checkCharacterPop.equals('(') && !checkCharacter.equals(')'))
@@ -82,7 +83,8 @@ public class Codewars1 {
                 }
 
                 //If we still have more on the stack, then we didn't have ending braces and therefore it's already wrong
-                result = false;
+                if(stack.size() > 0)
+                    result = false;
             }
             else
             {
@@ -90,8 +92,16 @@ public class Codewars1 {
             }
             return result;
         }
+    }
 
+    
+    public static class WordOrder 
+    {
+        //https://www.codewars.com/kata/55c45be3b2079eccff00010f/train/java
+        public static String order(String words) {
+            String result = "";
 
-
+            return result;
+        }
     }
 }
