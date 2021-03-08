@@ -1,5 +1,8 @@
 package com.enzy.sandbox;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Stack;
 import java.lang.Character;
 
@@ -7,7 +10,8 @@ public class Codewars1 {
     public static void main(String[] args) 
     {
         //System.out.println("Hello Death");
-        testValid();
+        //testValid();
+        testWordOrder();
     }
     
 
@@ -29,6 +33,11 @@ public class Codewars1 {
         
     }
     
+    public static void testWordOrder()
+    {
+        WordOrder order = new WordOrder();
+        System.out.println(order.order("is2 Thi1s T4est 3a"));
+    }
 
     //Valid Braces
     //https://www.codewars.com/kata/5277c8a221e209d3f6000b56/train/java
@@ -98,8 +107,26 @@ public class Codewars1 {
     public static class WordOrder 
     {
         //https://www.codewars.com/kata/55c45be3b2079eccff00010f/train/java
-        public static String order(String words) {
+        public static String order(String words) 
+        {
             String result = "";
+            ArrayList<String> resultList = ArrayList<String>();
+
+            ArrayList<String> wordList = new ArrayList<String>();
+            Collections.addAll(Arrays.asList(words), wordList);
+
+            //Find the number in the word
+            for(String word: wordList)
+            {
+                Pattern p = Pattern.compile(myMagicPattern);  // insert your pattern here
+                Matcher m = p.matcher(contentString);
+                if (m.find()) 
+                {
+                    int position = m.start();
+                }
+            }
+
+
 
             return result;
         }
