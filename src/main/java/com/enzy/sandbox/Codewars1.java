@@ -111,35 +111,40 @@ public class Codewars1 {
         public static String order(String words) 
         {
             String result = "";
-
-            ArrayList<String> wordList = new ArrayList<String>();
-            wordList.addAll( Arrays.asList(words.split("\\s+")) );
-
-            String[] resultList = new String[wordList.size()];
-
-            //Find the number in the word
-            int position = -1;
-            for(String word: wordList)
+            //Easy test, check if we even have a word to order
+            if(words.length()>1)
             {
-                Pattern p = Pattern.compile("[1-9]");  // insert your pattern here
-                Matcher m = p.matcher(word);
-                position = m.find() ? m.start() : -1 ;
+                ArrayList<String> wordList = new ArrayList<String>();
+                wordList.addAll( Arrays.asList(words.split("\\s+")) );
 
-                System.out.println(word);
-                System.out.println(word.charAt(position));
-                System.out.println("---------");
+                String[] resultList = new String[wordList.size()];
 
-                //resultList.add(position, word);
-                resultList[ (Character.getNumericValue(word.charAt(position))-1 ) ] = word;
+                //Find the number in the word
+                int position = -1;
+                for(String word: wordList)
+                {
+                    Pattern p = Pattern.compile("[1-9]"); 
+                    Matcher m = p.matcher(word);
+                    position = m.find() ? m.start() : -1 ;
+
+                    System.out.println(word);
+                    System.out.println(word.charAt(position));
+                    System.out.println("---------");
+
+                     //We found a number, now place word into the array position with it minus one to account for zero index arrays (because computers!)
+                    if(position > -1)
+                    {
+                        resultList[ (Character.getNumericValue(word.charAt(position))-1 ) ] = word;
+                    }
+                }
+                //Assemble a result string with the array
+                for(String word: resultList)
+                {
+                    result = result +" " +word;
+                }
+                System.out.println("RESULT: " + result);
             }
-            for(String word: resultList)
-            {
-                result = result +" " +word;
-            }
-            System.out.println("RESULT: " + result);
-
-
-            return result;
+            return result.trim();
         }
     }
 }
