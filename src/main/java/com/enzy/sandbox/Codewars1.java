@@ -3,7 +3,10 @@ package com.enzy.sandbox;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import java.util.Stack;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.lang.Character;
 
 public class Codewars1 {
@@ -17,26 +20,24 @@ public class Codewars1 {
 
     public static void testValid()
     {
-        BraceChecker checker = new BraceChecker();
-        System.out.println( checker.isValid("()}"));
-        System.out.println( checker.isValid("[(])")); 
+        System.out.println( BraceChecker.isValid("()}"));
+        System.out.println( BraceChecker.isValid("[(])")); 
 
-        System.out.println( checker.isValid("([{}])"));
-        System.out.println( checker.isValid("(}"));
+        System.out.println( BraceChecker.isValid("([{}])"));
+        System.out.println( BraceChecker.isValid("(}"));
 
-        System.out.println( checker.isValid("[(])(}(}))(}{]["));
-        System.out.println( checker.isValid("[(])(}(}))(}{][())({}}{()][][(((({{"));
+        System.out.println( BraceChecker.isValid("[(])(}(}))(}{]["));
+        System.out.println( BraceChecker.isValid("[(])(}(}))(}{][())({}}{()][][(((({{"));
         
-        System.out.println( checker.isValid("(((({{"));
-        System.out.println( checker.isValid("()"));
+        System.out.println( BraceChecker.isValid("(((({{"));
+        System.out.println( BraceChecker.isValid("()"));
         
         
     }
     
     public static void testWordOrder()
     {
-        WordOrder order = new WordOrder();
-        System.out.println(order.order("is2 Thi1s T4est 3a"));
+        System.out.println(WordOrder.order("is2 Thi1s T4est 3a"));
     }
 
     //Valid Braces
@@ -44,7 +45,7 @@ public class Codewars1 {
 
     public static class BraceChecker 
     {
-        public boolean isValid(String braces) 
+        public static boolean isValid(String braces) 
         {
             boolean result = true;
             braces = braces.replace(" ", "");
@@ -110,22 +111,32 @@ public class Codewars1 {
         public static String order(String words) 
         {
             String result = "";
-            ArrayList<String> resultList = ArrayList<String>();
 
             ArrayList<String> wordList = new ArrayList<String>();
-            Collections.addAll(Arrays.asList(words), wordList);
+            wordList.addAll( Arrays.asList(words.split("\\s+")) );
+
+            String[] resultList = new String[wordList.size()];
 
             //Find the number in the word
+            int position = -1;
             for(String word: wordList)
             {
-                Pattern p = Pattern.compile(myMagicPattern);  // insert your pattern here
-                Matcher m = p.matcher(contentString);
-                if (m.find()) 
-                {
-                    int position = m.start();
-                }
-            }
+                Pattern p = Pattern.compile("[1-9]");  // insert your pattern here
+                Matcher m = p.matcher(word);
+                position = m.find() ? m.start() : -1 ;
 
+                System.out.println(word);
+                System.out.println(word.charAt(position));
+                System.out.println("---------");
+
+                //resultList.add(position, word);
+                resultList[ (Character.getNumericValue(word.charAt(position))-1 ) ] = word;
+            }
+            for(String word: resultList)
+            {
+                result = result +" " +word;
+            }
+            System.out.println("RESULT: " + result);
 
 
             return result;
